@@ -2,6 +2,17 @@
 
 **English** | [简体中文](README.zh-CN.md)
 
+## Visual navigation
+
+Prefer an overview to opening documents one by one?
+
+- [Open the interactive English mind map](https://cxfydhcg.github.io/ai-coding-era/mindmap.html) — expand, collapse, zoom, and follow links
+- [打开中文交互式思维导图](https://cxfydhcg.github.io/ai-coding-era/)
+- [Browse the clickable map directly on GitHub](MINDMAP.md)
+- [Download the offline interactive Markmap preview](mindmap.html?raw=1), then open it locally
+
+The preview is generated with the open-source [Markmap](https://github.com/markmap/markmap) project. After cloning the repository, open `mindmap.html`, or run `npm install` and `npm run mindmap` to rebuild both offline previews. Use `npm run mindmap:watch:en` for a live English preview while editing.
+
 ## How individual development, team collaboration, task management, and team architecture should change
 
 AI is rapidly lowering the cost of turning an idea into code, but the fundamental constraints of software engineering have not disappeared. Requirements can still be unclear. Systems still run in production. Someone must still own failures. Future developers and agents must still maintain today's code.

@@ -2,6 +2,17 @@
 
 [English](README.md) | **简体中文**
 
+## 可视化导航
+
+如果逐篇打开文档感觉绕，可以先看全局结构：
+
+- [在线打开中文交互式思维导图](https://cxfydhcg.github.io/ai-coding-era/)——支持展开、折叠、缩放和章节跳转
+- [Open the interactive English mind map](https://cxfydhcg.github.io/ai-coding-era/mindmap.html)
+- [直接在 GitHub 浏览可点击的导图结构](MINDMAP.zh-CN.md)
+- [下载离线交互式 Markmap 预览](mindmap.zh-CN.html?raw=1)，然后在本地打开
+
+预览使用开源 [Markmap](https://github.com/markmap/markmap) 生成。Clone 仓库后可以直接打开 `mindmap.zh-CN.html`；运行 `npm install` 和 `npm run mindmap` 可以重新生成两种语言的离线预览，编辑中文导图时运行 `npm run mindmap:watch:zh` 可获得实时预览。
+
 ## 个人、团队协作、任务管理与组织架构应该如何改变
 
 AI 正在快速降低“把想法变成代码”的成本，但软件工程的核心约束并没有消失。需求仍然可能不清楚，系统仍然会进入生产环境，错误仍然需要有人负责，代码仍然要被未来的开发者和 Agent 维护。
