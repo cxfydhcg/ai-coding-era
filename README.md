@@ -1,66 +1,80 @@
-# AI Coding 时代的软件开发进化
+# Evolving Software Development in the AI Coding Era
 
-## 个人、团队协作、任务管理与组织架构应该如何改变
+**English** | [简体中文](README.zh-CN.md)
 
-AI 正在快速降低“把想法变成代码”的成本，但软件工程的核心约束并没有消失。需求仍然可能不清楚，系统仍然会进入生产环境，错误仍然需要有人负责，代码仍然要被未来的开发者和 Agent 维护。
+## How individual development, team collaboration, task management, and team architecture should change
 
-因此，AI coding 的重点不应该只是“如何写出更好的 prompt”，而应该是：
+AI is rapidly lowering the cost of turning an idea into code, but the fundamental constraints of software engineering have not disappeared. Requirements can still be unclear. Systems still run in production. Someone must still own failures. Future developers and agents must still maintain today's code.
 
-> 当实现能力变得便宜而充足时，个人、团队和公司应如何重新设计责任、工作流、任务系统与组织结构？
+The central question of AI coding is therefore not merely how to write better prompts. It is:
 
-这个仓库给出一套可逐步采用的方法。它不是某个工具的使用手册，也不依赖某个具体代码仓库；它讨论的是长期的软件开发原则。
+> When implementation capacity becomes cheap and abundant, how should individuals, teams, and companies redesign responsibility, workflows, task systems, and organizational structure?
 
-## 核心判断
+This repository presents an approach that can be adopted incrementally. It is not a manual for a specific tool or codebase. It is a guide to the durable principles of software development in an AI-assisted environment.
 
-1. **AI 提高的是实现吞吐量，不自动提高问题定义和结果验证的质量。**
-2. **人类从主要代码生产者，逐步转向意图负责人、约束设计者、审查者和生产责任人。**
-3. **Agent 可以发现、实现和验证，但不能因为发现了问题就自动获得扩大范围或改变生产状态的权限。**
-4. **Repository 应成为版本化的运行记忆，而不只是源代码容器。**
-5. **任务必须包含结果、边界、验证方法和责任人；prompt 不能代替任务契约。**
-6. **团队的竞争力来自高质量反馈循环，而不是生成代码的数量。**
-7. **删除旧代码、淘汰兼容层和压缩过期上下文，是完整生命周期的一部分。**
+## Core propositions
 
-## 阅读路径
+1. **AI increases implementation throughput; it does not automatically improve problem definition or result verification.**
+2. **Humans increasingly move from primary code producers toward owners of intent, constraints, review, and production outcomes.**
+3. **Agents may discover, implement, and verify, but discovery does not grant authority to expand scope or change production state.**
+4. **A repository should become versioned operational memory, not merely a source-code container.**
+5. **A task needs an outcome, boundaries, verification, and accountability; a prompt is not a task contract.**
+6. **A team's advantage comes from high-quality feedback loops, not the volume of generated code.**
+7. **Removing obsolete code, compatibility layers, and stale context is part of the lifecycle.**
 
-| 主题 | 解决的问题 | 文档 |
+## Reading guide
+
+| Topic | Question | Document |
 | --- | --- | --- |
-| 总体原则 | AI coding 中什么不应改变？ | [核心原则](docs/01-core-principles.md) |
-| 个人 | 一个人如何与 Agent 协作并对结果负责？ | [个人工作方式](docs/02-individual-workflow.md) |
-| 团队 | 多人、多 Agent 如何共享上下文、审查与发布？ | [团队协作](docs/03-team-collaboration.md) |
-| 任务 | 如何定义、路由、执行和关闭工作？ | [任务管理](docs/04-task-management.md) |
-| 组织 | 公司应如何划分领域团队、平台能力和治理责任？ | [组织与团队结构](docs/05-organization-structure.md) |
-| Repository | 如何把临时对话变成可执行的长期记忆？ | [从代码仓库到运行记忆](docs/06-repository-as-operational-memory.md) |
-| 落地 | 如何从个人试用逐步走向组织能力？ | [采用路线图](docs/07-adoption-roadmap.md) |
+| Research foundation | Which claims are research-backed, and which require local validation? | [Research foundation and evidence boundaries](docs/en/00-research-foundation.md) |
+| Principles | What should remain invariant in AI-assisted development? | [Core principles](docs/en/01-core-principles.md) |
+| Individual lifecycle | How does one person work with agents from problem to production evidence? | [Individual software development lifecycle](docs/en/02-individual-workflow.md) |
+| Team lifecycle | How do people and agents collaborate across one value stream? | [Collaborative software development lifecycle](docs/en/03-team-collaboration.md) |
+| Task management | How is work selected, queued, authorized, verified, and closed? | [Task management](docs/en/04-task-management.md) |
+| Team architecture | How should domain ownership, platforms, enablement, and governance be structured? | [Team architecture](docs/en/05-organization-structure.md) |
+| Repository memory | How does temporary discussion become executable long-term context? | [From code repository to operational memory](docs/en/06-repository-as-operational-memory.md) |
+| Adoption | How does an organization move from individual trials to organizational capability? | [Adoption roadmap](docs/en/07-adoption-roadmap.md) |
 
-## 一套最小工作模型
+## A minimal operating model
 
 ```text
-人类定义结果、约束和风险边界
-            ↓
-Agent 检索上下文、提出计划并实现
-            ↓
-自动化验证行为、质量和策略
-            ↓
-人类审查关键判断并授权发布
-            ↓
-生产证据回流到任务、文档和淘汰决策
+Humans define outcomes, constraints, and risk boundaries
+                         ↓
+Agents retrieve context, propose plans, and implement
+                         ↓
+Automation verifies behavior, quality, and policy
+                         ↓
+Humans review consequential judgments and authorize release
+                         ↓
+Production evidence flows back into tasks, documentation, and retirement decisions
 ```
 
-这个模型可以由一个人完成多个角色，也可以由大型组织中的不同团队完成。关键不是职位名称，而是责任不能缺失。
+One person may hold several responsibilities in a small organization; a larger company may distribute them across teams. The titles are optional. The responsibilities are not.
 
-## 可直接使用的模板
+## Keep the four levels distinct
 
-- [任务契约](templates/task-contract.md)：让任务在交给人或 Agent 前具备可执行性。
-- [Backlog 条目](templates/backlog-item.md)：保存真实但当前不应处理的问题。
-- [决策记录](templates/decision-record.md)：保存长期有价值的“为什么”。
+```text
+Individual SDLC: how one person turns one task into a trustworthy result
+Team lifecycle: how a team moves from a user problem to production learning
+Task system: how work is selected, queued, authorized, verified, and closed
+Team architecture: how the company designs long-term ownership, platforms, and team interactions
+```
 
-## 这套方法不主张什么
+The individual lifecycle optimizes an execution. Team collaboration optimizes an end-to-end delivery. Task management optimizes flow. Team architecture optimizes the organization's long-term ability to create value. They influence one another, but one diagram cannot replace all four.
 
-- 不主张所有知识都必须放进 repository；人员、客户、财务等敏感信息应留在合适的系统中。
-- 不主张每个小改动都写长篇 specification；流程重量应由不确定性、协作成本和风险决定。
-- 不主张以 Agent 取代责任人；执行可以委托，问责不能委托。
-- 不主张追求无人审查的最大自动化；高风险动作必须有明确授权和可验证证据。
+## Ready-to-use templates
 
-## 当前状态
+- [Task contract](templates/en/task-contract.md): make work executable before assigning it to a person or agent.
+- [Backlog item](templates/en/backlog-item.md): preserve a real issue that should not expand the current scope.
+- [Decision record](templates/en/decision-record.md): retain the durable “why” behind a consequential choice.
 
-这是一个持续演进的实践手册。首版重点建立统一语言、责任边界和可直接复用的工作模板；后续可以继续补充真实案例、评估方法、指标和工具实现。
+## What this approach does not claim
+
+- Not all organizational knowledge belongs in a repository. Sensitive personnel, customer, and financial information belongs in the appropriate controlled systems.
+- Not every small change needs a long specification. Process weight should follow uncertainty, coordination cost, and risk.
+- Agents do not replace accountable owners. Execution can be delegated; accountability cannot.
+- Maximum unsupervised automation is not the goal. High-risk actions require explicit authority and verifiable evidence.
+
+## Status
+
+This is an evolving bilingual practice guide. The English and Chinese editions use matching numbers and structure so that research, examples, evaluation methods, and implementation guidance can evolve together.
