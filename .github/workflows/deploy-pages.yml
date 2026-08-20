@@ -1,0 +1,57 @@
+name: Deploy interactive mind maps to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - MINDMAP.md
+      - MINDMAP.zh-CN.md
+      - mindmap.html
+      - mindmap.zh-CN.html
+      - .github/workflows/deploy-pages.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Prepare bilingual site
+        run: |
+          mkdir -p _site
+          cp mindmap.html _site/mindmap.html
+          cp mindmap.zh-CN.html _site/mindmap.zh-CN.html
+          cp mindmap.zh-CN.html _site/index.html
+          touch _site/favicon.ico
+          sed -i 's|href=\\"docs/|href=\\"https://github.com/cxfydhcg/ai-coding-era/blob/main/docs/|g' _site/*.html
+          sed -i 's|href=\\"templates/|href=\\"https://github.com/cxfydhcg/ai-coding-era/blob/main/templates/|g' _site/*.html
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

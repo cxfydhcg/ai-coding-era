@@ -1,0 +1,14 @@
+{
+  "name": "ai-coding-era-guide",
+  "private": true,
+  "scripts": {
+    "mindmap": "npm run mindmap:en && npm run mindmap:zh",
+    "mindmap:en": "markmap --no-open --offline MINDMAP.md -o mindmap.html",
+    "mindmap:zh": "markmap --no-open --offline MINDMAP.zh-CN.md -o mindmap.zh-CN.html",
+    "mindmap:watch:en": "markmap --watch MINDMAP.md -o mindmap.html",
+    "mindmap:watch:zh": "markmap --watch MINDMAP.zh-CN.md -o mindmap.zh-CN.html"
+  },
+  "devDependencies": {
+    "markmap-cli": "0.18.12"
+  }
+}
