@@ -1,4 +1,6 @@
-# Backlog Item
+# Backlog 条目
+
+[English](en/backlog-item.md) | **简体中文**
 
 ## `[ID] Short title`
 

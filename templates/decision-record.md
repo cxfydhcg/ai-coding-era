@@ -1,4 +1,6 @@
-# Decision Record
+# 决策记录
+
+[English](en/decision-record.md) | **简体中文**
 
 ## `[ID] Decision title`
 

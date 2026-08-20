@@ -1,4 +1,6 @@
-# Task Contract
+# 任务契约
+
+[English](en/task-contract.md) | **简体中文**
 
 > 建议 ID：`DOMAIN-001`。删除所有提示文字后再进入 Ready。
 
