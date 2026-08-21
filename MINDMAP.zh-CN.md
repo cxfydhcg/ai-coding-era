@@ -73,9 +73,28 @@ markmap:
 - 跨职能 Definition of Done
 - 明确决策权
 
+### 切片、分配与依赖解耦
+
+- 时长构成变了：实现变短，验证与等待变长
+- 分配结果和决定权，不是工时
+- 垂直切片，而不是职能交接
+- 四种依赖
+  - 契约依赖
+  - 真实顺序依赖
+  - 资源与环境依赖
+  - 知识与决策依赖
+- 解耦手段
+  - 契约先行
+  - mock 与假实现
+  - expand → migrate → contract
+  - feature flag
+  - 反向切片
+  - 单写者原则
+- 阻塞可见并按时限升级
+- 未确定的语义无法并行
+
 ### 并行交付
 
-- 垂直切片，而不是职能交接
 - 接口契约与 ownership
 - 小批量持续集成
 
@@ -123,6 +142,23 @@ markmap:
 - WIP 由验证能力决定
 - 管理任务老化与阻塞队列
 - 使用历史 cycle time 和概率式 SLE
+
+### 完成深度
+
+- D0 存在：点了有反应
+- D1 主路径正确
+- D2 边界与失败路径
+- D3 在真实系统中可运行
+- D4 结果被验证并删除旧路径
+- 任务契约声明目标深度
+- 深度由风险与可逆性决定
+- 典型浅完成模式
+  - 只覆盖被提到的输入
+  - 测试与实现同源
+  - 只在演示数据上正确
+  - 运行面缺失
+  - 只做加法不做减法
+- Done 是有证据的断言，不是状态点击
 
 ### 权限与风险匹配
 
@@ -185,6 +221,8 @@ markmap:
 ### 可直接使用的模板
 
 - [任务契约](templates/task-contract.md)
+- [完成深度检查表](templates/completion-depth-checklist.md)
+- [依赖与切片地图](templates/dependency-map.md)
 - [Backlog 条目](templates/backlog-item.md)
 - [决策记录](templates/decision-record.md)
 

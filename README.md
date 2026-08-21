@@ -32,6 +32,8 @@ This repository presents an approach that can be adopted incrementally. It is no
 5. **A task needs an outcome, boundaries, verification, and accountability; a prompt is not a task contract.**
 6. **A team's advantage comes from high-quality feedback loops, not the volume of generated code.**
 7. **Removing obsolete code, compatibility layers, and stale context is part of the lifecycle.**
+8. **“Done” must declare its depth and carry evidence; a responsive interface is not finished behavior, failure handling, or operability.**
+9. **Once implementation is cheap, the bottleneck is verification and dependency waiting; decoupling work shortens delivery more than adding parallel execution.**
 
 ## Reading guide
 
@@ -40,8 +42,8 @@ This repository presents an approach that can be adopted incrementally. It is no
 | Research foundation | Which claims are research-backed, and which require local validation? | [Research foundation and evidence boundaries](docs/en/00-research-foundation.md) |
 | Principles | What should remain invariant in AI-assisted development? | [Core principles](docs/en/01-core-principles.md) |
 | Individual lifecycle | How does one person work with agents from problem to production evidence? | [Individual software development lifecycle](docs/en/02-individual-workflow.md) |
-| Team lifecycle | How do people and agents collaborate across one value stream? | [Collaborative software development lifecycle](docs/en/03-team-collaboration.md) |
-| Task management | How is work selected, queued, authorized, verified, and closed? | [Task management](docs/en/04-task-management.md) |
+| Team lifecycle | How do people and agents slice, assign, and decouple work across one value stream? | [Collaborative software development lifecycle](docs/en/03-team-collaboration.md) |
+| Task management | How is work selected, queued, authorized, verified, and closed—and what counts as truly done? | [Task management](docs/en/04-task-management.md) |
 | Team architecture | How should domain ownership, platforms, enablement, and governance be structured? | [Team architecture](docs/en/05-organization-structure.md) |
 | Repository memory | How does temporary discussion become executable long-term context? | [From code repository to operational memory](docs/en/06-repository-as-operational-memory.md) |
 | Adoption | How does an organization move from individual trials to organizational capability? | [Adoption roadmap](docs/en/07-adoption-roadmap.md) |
@@ -76,6 +78,8 @@ The individual lifecycle optimizes an execution. Team collaboration optimizes an
 ## Ready-to-use templates
 
 - [Task contract](templates/en/task-contract.md): make work executable before assigning it to a person or agent.
+- [Completion depth checklist](templates/en/completion-depth-checklist.md): ask “what is still missing?” consistently before marking work Done.
+- [Dependency and slice map](templates/en/dependency-map.md): write down slices, interface contracts, and blocking relations before working in parallel.
 - [Backlog item](templates/en/backlog-item.md): preserve a real issue that should not expand the current scope.
 - [Decision record](templates/en/decision-record.md): retain the durable “why” behind a consequential choice.
 

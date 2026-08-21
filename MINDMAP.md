@@ -73,9 +73,28 @@ markmap:
 - Cross-functional Definition of Done
 - Explicit decision rights
 
+### Slice, assign, decouple
+
+- Duration shifted: implementation shrank, verification and waiting grew
+- Assign outcomes and decision rights, not hours
+- Vertical slices, not functional handoffs
+- Four dependency types
+  - Contract
+  - True sequence
+  - Resource and environment
+  - Knowledge and decision
+- Decoupling moves
+  - Contract first
+  - Mocks and fakes
+  - Expand → migrate → contract
+  - Feature flags
+  - Reverse slicing
+  - Single writer
+- Make blocks visible and escalate on age
+- Undecided semantics cannot be parallelized
+
 ### Parallel delivery
 
-- Vertical slices, not functional handoffs
 - Interface contracts and ownership
 - Continuous integration in small batches
 
@@ -123,6 +142,23 @@ markmap:
 - WIP follows verification capacity
 - Manage work item age and blocked queues
 - Use historical cycle time and probabilistic SLEs
+
+### Completion depth
+
+- D0 exists: click produces a reaction
+- D1 happy path correct
+- D2 boundaries and failure paths
+- D3 runs in the real system
+- D4 outcome validated and old paths removed
+- Contract declares target depth
+- Risk and reversibility set required depth
+- Shallow-completion patterns
+  - Only the mentioned inputs
+  - Tests derived from the implementation
+  - Correct only on demo data
+  - Missing operability
+  - Additions without removals
+- Done is an evidenced claim, not a status click
 
 ### Match authority to risk
 
@@ -185,6 +221,8 @@ markmap:
 ### Ready-to-use templates
 
 - [Task contract](templates/en/task-contract.md)
+- [Completion depth checklist](templates/en/completion-depth-checklist.md)
+- [Dependency and slice map](templates/en/dependency-map.md)
 - [Backlog item](templates/en/backlog-item.md)
 - [Decision record](templates/en/decision-record.md)
 

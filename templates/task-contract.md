@@ -35,12 +35,28 @@
 - [ ] （填写）
 - [ ] （填写）
 
+## 完成深度
+
+- 目标深度（D1 主路径 / D2 边界与失败路径 / D3 真实系统可运行 / D4 结果被验证）：
+- 显式不做的深度与原因：
+- 未做部分的 backlog 条目与 owner：
+- 检查表：[完成深度检查表](completion-depth-checklist.md)
+
 ## Verification plan
 
 - 自动检查：
 - 人工验证：
 - 生产观察：
 - 尚无法覆盖的风险：
+
+## 依赖与解耦
+
+- 被哪些任务阻塞（阻塞点是哪个接口或决定）：
+- 阻塞了哪些任务：
+- 依赖类型（契约 / 真实顺序 / 资源环境 / 决策）：
+- 解耦方式（契约先行 / mock / expand-migrate-contract / feature flag / 反向切片）：
+- 计划集成点与联合验证责任人：
+- 地图：[依赖与切片地图](dependency-map.md)
 
 ## Responsibility and authority
 

@@ -12,7 +12,7 @@ Software development should not be a relay race in which product writes requirem
 User and business discovery
   → Shared outcome definition
   → Technical discovery and task contract
-  → Slicing, interfaces, and ownership
+  → Slicing, assignment, and dependency decoupling
   → Parallel execution and continuous integration
   → Risk-oriented review
   → Progressive release
@@ -54,20 +54,85 @@ Before committing delivery, identify:
 
 Discovery does not mean completing all design upfront. It means exposing unknowns that could invalidate the commitment. Run time-boxed spikes where necessary and return conclusions to the task contract or decision record.
 
-## 4. Slice work, define interfaces, assign ownership
+## 4. Slice, assign, and decouple dependencies
 
-Break the outcome into independently integrable vertical slices. Avoid recreating handoff queues with separate “frontend,” “backend,” and “testing” tasks that cannot deliver value alone.
+### 4.1 The shape of task duration changed
 
-Before parallel work, define:
+Once implementation is cheap, a task no longer spends most of its time being written:
 
-- one accountable owner for each slice;
-- inputs, outputs, and acceptance criteria;
-- API, schema, event, or UI contracts;
-- single-writer ownership for shared facts and files;
-- who verifies the integrated result;
-- how conflicts and scope expansion escalate.
+```text
+Before (illustrative): understand ██  implement ████████  verify ██    wait and coordinate █
+Now (illustrative):    understand ██  implement ██        verify █████ wait and coordinate █████
+```
 
-Agents can parallelize independent research, testing, migration analysis, and bounded module work. Unresolved product semantics cannot be parallelized by adding more agents.
+The shape is illustrative; each team should measure its own time in state (see work item age in [task management](04-task-management.md)). The consequences are direct:
+
+- Estimation is no longer about “how long to implement” but “how long to reach the target completion depth,” including verification, integration, and release.
+- The bottleneck moved from implementation to verification and waiting, so assigning by “who has time to write code now” just pushes queue into the bottleneck.
+- One person driving several agents raises personal output, but team lead time may not improve—and can degrade—if verification and dependencies are unchanged.
+- Slice by the smallest independently verifiable result, not by how many hours someone has this week.
+
+### 4.2 Assign outcomes and decision rights, not hours
+
+For each slice make four things explicit: who is accountable for the result, who executes (human or agent), who validates independently, and who may change the interface.
+
+- Assign vertical, verifiable slices rather than frontend/backend/testing layers, which recreate handoff queues.
+- By default keep implementation and verification of a slice with the same person or pair; split executor and independent validator only for high-risk work.
+- Give semantically coupled adjacent slices to one owner; split across people only at a clear boundary, and write the interface contract there.
+- The number of tasks a person can run in parallel is set by the review and context-switching cost they can carry, not by how many agents they can launch.
+- When someone is blocked, have them remove the block or help older work advance instead of pulling a new task.
+- Assign the **target completion depth** at the same time. If two people hold different notions of “done,” the difference becomes an invisible queue.
+
+### 4.3 Four kinds of dependency, four responses
+
+| Dependency | Example | Response |
+| --- | --- | --- |
+| Contract | Task 1 needs task 2's API, schema, or event format | Define the contract together first (often under an hour), then implement in parallel against it; lock the boundary with contract tests |
+| True sequence | Migration must precede reading the new field | Split into expand → migrate → contract, each independently releasable and reversible |
+| Resource and environment | One pre-production environment, one test account, one approver | Turn it into an explicit queue or rota instead of invisible waiting; platform it away when possible |
+| Knowledge and decision | Waiting on a product, security, or compliance answer | Convert to a time-boxed decision: agreed response window, documented default if it lapses, captured in a decision record |
+
+Always ask first whether the order is **genuinely required** or only **an artifact of not agreeing the contract early**. Most of the time it is the latter.
+
+### 4.4 Turn waiting into parallelism
+
+- **Contract first:** merge the interface definition, schema, types, or event format before both sides implement. The contract is a short task that can unlock days of waiting.
+- **Fakes:** the dependent side runs behavior and tests against a mock, stub, or fake; contract tests keep the real implementation honest on swap-in.
+- **Expand–migrate–contract:** add the compatible new field or path, migrate with dual write and dual read, then delete the old path. Each step ships on its own.
+- **Feature flags and dark launches:** an unfinished downstream does not block upstream merges; every flag carries an owner and a removal gate.
+- **Single writer:** each shared source of truth—schema, configuration, shared module, one document—has exactly one writer; others raise change requests, which avoids conflict rework.
+- **Reverse slicing:** if task 1 must wait for task 2, carve out the part of task 1 that does not depend on task 2 and shrink the dependency to one explicit interface point.
+- Do not answer a dependency with “launch another agent.” Independent work parallelizes; an undecided semantic does not.
+
+### 4.5 Dependencies must be visible
+
+```text
+Bad assignment (implicit sequence)
+A: task 1  ───── waiting on task 2 ─────►  implement ─► verify
+B: task 2  ─► implement ─► verify
+    A idles; B's finish time becomes A's start time
+
+Good assignment (contract first + reverse slicing)
+A+B: interface contract (one short conversation or a small PR)
+A: task 1 (implement and test against a mock) ──►┐
+B: task 2 (implement the real end) ─────────────►┤ one integration ─► joint verification
+    Waiting collapses into one explicit integration point
+```
+
+Team agreements:
+
+- Dependencies live in the work item—who blocks whom, at which interface, and when it is expected to clear—not in chat history.
+- Blocks escalate automatically past an agreed age, and the discussion is about the queue and the interface, not about individual effort.
+- Blocked waiting counts toward work item age so the cost of waiting is visible on the board.
+- Synchronization asks three questions only: which item is blocked today, what is the blocking point, and who can clear it.
+- Record slices, contracts, and blocking relations in the [dependency map](../../templates/en/dependency-map.md).
+
+### 4.6 What cannot be parallelized
+
+- Undecided product semantics and acceptance criteria;
+- two competing assumptions about the same core logic, which produce mutually exclusive implementations;
+- concurrent edits to a single-writer source of truth;
+- several high-risk changes competing for the same scarce verification resource—they only pile up in the Verify queue.
 
 ## 5. Parallel execution and continuous integration
 

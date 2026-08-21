@@ -32,6 +32,8 @@ AI 正在快速降低“把想法变成代码”的成本，但软件工程的�
 5. **任务必须包含结果、边界、验证方法和责任人；prompt 不能代替任务契约。**
 6. **团队的竞争力来自高质量反馈循环，而不是生成代码的数量。**
 7. **删除旧代码、淘汰兼容层和压缩过期上下文，是完整生命周期的一部分。**
+8. **“完成”必须声明深度并附带证据；界面有反应不等于行为、失败路径和运行面已经完成。**
+9. **实现变便宜之后，瓶颈是验证和依赖等待；解耦任务比增加并行执行更能缩短交付时间。**
 
 ## 阅读路径
 
@@ -40,8 +42,8 @@ AI 正在快速降低“把想法变成代码”的成本，但软件工程的�
 | 研究基础 | 哪些结论有研究支持，哪些仍需在本组织验证？ | [研究基础与证据边界](docs/00-research-foundation.md) |
 | 总体原则 | AI coding 中什么不应改变？ | [核心原则](docs/01-core-principles.md) |
 | 个人开发生命周期 | 一个人如何与 Agent 从问题走到生产结果？ | [个人软件开发生命周期](docs/02-individual-workflow.md) |
-| 团队协作生命周期 | 多人、多 Agent 如何共同完成同一条价值流？ | [团队协作的软件生命周期](docs/03-team-collaboration.md) |
-| 任务 | 如何定义、路由、执行和关闭工作？ | [任务管理](docs/04-task-management.md) |
+| 团队协作生命周期 | 多人、多 Agent 如何切片、分配和解耦依赖，共同完成同一条价值流？ | [团队协作的软件生命周期](docs/03-team-collaboration.md) |
+| 任务 | 如何定义、路由、执行和关闭工作，什么才算真的完成？ | [任务管理](docs/04-task-management.md) |
 | 团队架构 | 公司应如何划分领域团队、平台能力和治理责任？ | [团队架构](docs/05-organization-structure.md) |
 | Repository | 如何把临时对话变成可执行的长期记忆？ | [从代码仓库到运行记忆](docs/06-repository-as-operational-memory.md) |
 | 落地 | 如何从个人试用逐步走向组织能力？ | [采用路线图](docs/07-adoption-roadmap.md) |
@@ -76,6 +78,8 @@ Agent 检索上下文、提出计划并实现
 ## 可直接使用的模板
 
 - [任务契约](templates/task-contract.md)：让任务在交给人或 Agent 前具备可执行性。
+- [完成深度检查表](templates/completion-depth-checklist.md)：在标记 Done 之前统一追问“还缺什么”。
+- [依赖与切片地图](templates/dependency-map.md)：并行之前写清切片、接口契约和阻塞关系。
 - [Backlog 条目](templates/backlog-item.md)：保存真实但当前不应处理的问题。
 - [决策记录](templates/decision-record.md)：保存长期有价值的“为什么”。
 

@@ -142,18 +142,76 @@ Real problem?
 
 A backlog item must stand alone without the original conversation. Use the [backlog template](../../templates/en/backlog-item.md). Regularly remove duplicates, expired concerns, and work the organization will never pursue.
 
+## Completion depth: demo-able is not done
+
+AI makes the first working version very cheap, so the “done” signal arrives earlier. What got faster is the time to reach a **demo-able** state, not the time to reach a **production-worthy** one. Generated implementations cover happy-path patterns well and systematically under-serve boundary semantics, failure paths, and operational reality, so the distance between a demo and real completion usually widens rather than shrinks.
+
+“The button exists and clicking it does something” is the shallowest layer, not completion.
+
+### Depth levels
+
+| Depth | Meaning | Exit evidence |
+| --- | --- | --- |
+| D0 Exists | Code merged, UI present, click produces a reaction | Screenshot or demo |
+| D1 Happy path correct | Typical input produces the correct result | Automated tests against acceptance criteria |
+| D2 Boundaries and failure paths correct | Empty, oversized, invalid input, concurrency, duplicate submission, retry, timeout, insufficient permission, partial failure, idempotency | Boundary tests and exploratory records |
+| D3 Runs in the real system | Real data volume and legacy dirty data, migration and compatibility, performance, observability, rollback, multi-user and multi-tenant views | Pre-production or canary evidence |
+| D4 Outcome validated | Target signals moved; old paths and temporary mechanisms removed | Production evidence and retirement record |
+
+Depth is not a quality score. It is the **scope of the commitment**. A task contract must declare its target depth; without it, both humans and agents default to stopping at D0 or D1.
+
+### Shallow-completion patterns to expect in the AI era
+
+Asking about these finds real gaps faster than asking “is this code correct?”
+
+- **Unclosed state:** a success state exists, but loading, empty, error, retry, disabled, and partial-failure states do not; failures are silently swallowed.
+- **Only the mentioned inputs:** inputs named in the prompt are handled; unmentioned input types, boundary values, concurrency, and duplicate submissions are skipped.
+- **Tests derived from the implementation:** assertions restate the code instead of the requirement—high coverage, no independent oracle.
+- **Correct only on demo data:** passes on small clean datasets and fails at real volume, on legacy dirty data, or across tenants and time zones.
+- **Single-perspective validation:** verified only as the author, with admin rights, on desktop, in the default locale.
+- **Additions without removals:** the new path ships while the old path, dual writes, migration scripts, feature flags, and dead code remain.
+- **Missing operability:** no logs, metrics, alerts, audit trail, or diagnostic entry point when something breaks.
+- **Documentation and configuration drift:** behavior changed; current-state docs, runbooks, alert thresholds, and permission configuration did not.
+- **Locally done, integration undone:** every slice passes its own checks and nobody owns the combined behavior.
+- **Deep omissions:** performance and N+1 queries, concurrent writes, time zones and units, localization, accessibility, data retention and deletion.
+
+### Risk and reversibility set the required depth
+
+| Work type | Reasonable target depth |
+| --- | --- |
+| One-off internal script, copy change, throwaway prototype | D1 |
+| Normal internal feature, low-risk business logic | D2 |
+| User-facing feature, cross-team interface | D3 |
+| Authorization, payments, data migration, public API, security boundary | D3, and must reach D4 |
+
+Do not force maximum depth on every task. Excess depth consumes the team's scarcest verification capacity and crowds out genuinely high-risk work; insufficient depth pushes cost into future rework, incidents, and other teams. Teams delivering one product must agree on a minimum target depth, or one team's “done” becomes another team's invisible queue—see [team collaboration](03-team-collaboration.md).
+
+### Make depth operational
+
+- Write the **target depth** and the **explicitly excluded depth** into the task contract; excluded parts become backlog items with an owner and a review date.
+- State acceptance criteria as observable behavior under stated conditions, not as “implement feature X.”
+- Do not let the same agent session that wrote the implementation generate the tests for high-risk behavior; use a separate session and derive tests from the requirement rather than the diff to keep the oracle independent.
+- The first review question is “what is missing?” rather than “is this code correct?”—which inputs, states, failure paths, and user perspectives are uncovered.
+- Completion must carry evidence links. Done is an evidenced claim, not a status click.
+- Use the [completion depth checklist](../../templates/en/completion-depth-checklist.md) so depth does not depend on individual habits.
+- Treat shallow completion as a system signal, not a personal failing: watch reopen rate, patch tasks spawned shortly after Done, escaped defects, and review rework.
+
 ## Definition of Ready
 
 - Outcome, owner, and priority are clear.
 - Critical evidence is accessible.
 - Scope, non-goals, and agent authority are explicit.
 - Acceptance criteria are verifiable.
-- Dependencies and major unknowns are identified.
+- The target completion depth and its verification method are explicit.
+- Dependencies name the blocking point, the way it is removed, and who owns it—see the [dependency map](../../templates/en/dependency-map.md).
+- Major unknowns are identified.
 - The task fits the current feedback cycle.
 
 ## Definition of Done
 
 - Acceptance criteria have risk-appropriate evidence.
+- The declared target depth is reached; any depth not reached is recorded explicitly with an owner and a review date.
+- Boundary, failure-path, and operability results are inspectable, not just a happy-path demo.
 - Scope deviations are explained and authorized.
 - Code, tests, current documentation, and runtime configuration agree.
 - Release, rollback, and required observation are complete.
@@ -169,6 +227,8 @@ Multiple teams delivering one product should share a minimum Definition of Done;
 - waiting time and work item age in each state;
 - throughput, cycle time, and WIP;
 - review rework, scope expansion, and reopen rate;
+- patch tasks spawned shortly after Done (a shallow-completion signal);
+- share of waiting time caused by dependency or decision blocks;
 - generation time relative to verification time;
 - failed releases, rollback, and production defects;
 - legacy mechanisms that survive past their removal gate.
