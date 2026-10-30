@@ -4,6 +4,17 @@
 
 > Suggested ID: `DOMAIN-001`. Remove instructional text before the task enters Ready.
 
+## Current progress and resume point
+
+Replace stale state rather than appending session logs. Update on milestones, blockers, or before pausing.
+
+- Status / current executor / last updated:
+- Completed (distinguish implemented from verified):
+- In progress / next concrete action:
+- Blockers or pending decisions / who can resolve them:
+- Resume branch, commit, or PR (accessible to the successor):
+- Environment setup / verification commands / latest results and evidence:
+
 ## Outcome
 
 What observable user or system result should change? Describe behavior, not only code to modify.

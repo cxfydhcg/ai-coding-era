@@ -8,7 +8,7 @@ Faster individual implementation may not shorten team delivery. When work waits 
 
 Product, design, and engineering agree on the user problem, success conditions, and exclusions. Split work into increments that can be demonstrated, verified, or released independently, rather than only frontend and backend tickets.
 
-Each increment names an accountable owner, executor, verification method, and integration owner. One person can cover several roles for low-risk work; consequential changes need independent validation. Agree on [completion depth](04-task-management.md) so one person's completion does not become another's hidden backlog.
+Each increment names an accountable owner, executor, verification method, and integration owner in its repository task record. Keep progress and blockers in that same record. One person can cover several roles for low-risk work; consequential changes need independent validation. Agree on [completion depth](04-task-management.md) so one person's completion does not become another's hidden backlog.
 
 ## Distinguish four dependencies
 

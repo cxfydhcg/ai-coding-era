@@ -6,6 +6,8 @@
 
 我关心的是：当代码更容易生成，怎样让一个人、一支团队和一个组织更可靠地交付软件？下面分四篇讲清楚，每篇都给出可以尝试的做法。
 
+**共同前提：目标、计划、进度、决定和验证证据都落在仓库里。换人或换 Agent 后，接手者应能从仓库知道做什么、做到哪里、下一步是什么，不依赖原聊天或某个人的记忆。** [如何做到可接手](docs/06-repository-as-operational-memory.md)。
+
 ## 四条主线
 
 | 从哪里开始 | 核心问题 | 可以带走什么 |
@@ -24,7 +26,7 @@
 ## 按需查阅
 
 - [核心原则](docs/01-core-principles.md)：各篇共用的判断标准。
-- [仓库如何保存开发记忆](docs/06-repository-as-operational-memory.md)：信息放哪里，什么时候更新或删除。
+- [仓库即交接](docs/06-repository-as-operational-memory.md)：换人或换 Agent 后，如何独立继续。
 - [从小范围试起](docs/07-adoption-roadmap.md)：选一个问题，观察是否真的改善。
 - [研究与证据边界](docs/00-research-foundation.md)：哪些有研究支持，哪些是实践建议。
 

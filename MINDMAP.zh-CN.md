@@ -51,10 +51,16 @@ markmap:
 - 写清团队服务与决定边界
 - 从反复阻塞定位改进点
 
+## [共同基础：仓库可独立接手](docs/06-repository-as-operational-memory.md)
+
+- 目标、计划、进度与证据写入仓库
+- 一个任务入口，当前状态只维护一份
+- 阶段变化、阻塞和暂停前更新
+- 换人或换 Agent，从下一步继续
+
 ## 按需参考
 
 - [核心原则](docs/01-core-principles.md)
-- [仓库记忆](docs/06-repository-as-operational-memory.md)
 - [记录生命周期实践](docs/08-record-lifecycle.md)
   - 四类记录分别维护
   - 报告 → 审查 diff → 定期维护

@@ -6,6 +6,8 @@ These notes collect my experience with AI-assisted development, mistakes along t
 
 The question behind them: as code becomes easier to generate, how can individuals, teams, and organizations deliver software more reliably? Four articles cover different parts of that problem.
 
+**The shared foundation: goals, plans, progress, decisions, and verification evidence live in the repository. A new person or agent should be able to identify the work, its current state, and the next action without the original chat or someone's memory.** [Make work resumable](docs/en/06-repository-as-operational-memory.md).
+
 ## Four starting points
 
 | Article | Question | What you can use |
@@ -24,7 +26,7 @@ This gives the next development session somewhere to recover context and gives o
 ## Reference when needed
 
 - [Core principles](docs/en/01-core-principles.md): shared decision rules.
-- [Repository memory](docs/en/06-repository-as-operational-memory.md): where information belongs and when it changes or leaves.
+- [Repository as handoff](docs/en/06-repository-as-operational-memory.md): how a different person or agent resumes independently.
 - [Start with a small trial](docs/en/07-adoption-roadmap.md): test whether a change helps.
 - [Research and evidence boundaries](docs/en/00-research-foundation.md): research findings versus practice recommendations.
 

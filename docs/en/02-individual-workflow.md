@@ -14,7 +14,7 @@ Confirm the problem → Recover context → Define completion
 | Step | Action | Ready to continue when |
 | --- | --- | --- |
 | Confirm | Read original feedback, logs, or a reproduction; name the behavior to change. | The problem is real and worth addressing now. |
-| Recover context | Read relevant code, tests, rules, and open issues. | Current behavior, impact, and unknowns are understood. |
+| Recover context | Resume from the repository task record; read relevant code, tests, rules, and issues. | Current behavior, impact, and unknowns are understood. |
 | Define completion | Set the outcome, exclusions, constraints, acceptance, and authority. | Another person could judge completion. |
 | Implement and verify | Change one inspectable behavior, run useful nearby checks, and inspect the diff. | Results match expectations and failures remain visible. |
 | Review and release | Check scope, configuration, docs, and release conditions. | Risks have owners; failure can be stopped or recovered. |
@@ -51,4 +51,4 @@ Beyond the happy path, select checks for timeout, duplicate submission, concurre
 
 Small changes shorten feedback and make course correction easier, a direction supported by [DORA's small-batch guidance](https://dora.dev/capabilities/working-in-small-batches/). Choose verification depth for the actual task.
 
-The handoff should say what changed, what was verified, and what remains unverified. If production observation comes later, name its owner, signal, and check time, and keep that work pending. See [task management](04-task-management.md) for completion depth and the [record lifecycle](08-record-lifecycle.md) for maintaining context.
+Before pausing or handing off, write progress, next actions, and verification results back to the repository task record. The handoff should say what changed, what was verified, and what remains unverified. If production observation comes later, name its owner, signal, and check time, and keep that work pending. See [task management](04-task-management.md) for completion depth and the [record lifecycle](08-record-lifecycle.md) for maintaining context.

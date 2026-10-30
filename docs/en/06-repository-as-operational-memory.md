@@ -1,8 +1,26 @@
-# Keeping Development Memory in the Repository
+# Repository as Handoff: Resume with Any Person or Agent
 
 **English** | [简体中文](../06-repository-as-operational-memory.md)
 
-The next development session should not need to reconstruct everything from chat. A repository can preserve code-related behavior, unfinished work, and rationale for people and agents to retrieve as needed. Customer, personnel, and sensitive operational records still belong in appropriate controlled systems.
+The repository must preserve enough state to continue: intent, planned work, progress, blockers, and the next verification step. Use chat for discussion, then write decisions and progress back to the repository. They must not exist only in a session, private notes, or one agent's memory.
+
+## Provide one entry point
+
+Link the README and assistant instructions to the same task index, then to each task or requirement record. Reuse an existing index instead of creating a parallel board. The index provides navigation; each task record owns its current state:
+
+| What a successor needs | What to record |
+| --- | --- |
+| What and why | Outcome, scope, acceptance, and settled decisions. |
+| Current progress | Done, in progress, and not started; distinguish implemented from verified. |
+| Where to resume | An accessible branch, commit, or PR, and the next concrete action. |
+| What blocks progress | Dependencies, pending decisions, owners, and authority boundaries. |
+| How to verify | Environment setup, commands, results, evidence locations, and last update. |
+
+The current executor updates this record after a milestone, changed decision, blocker, or before pausing. Replace stale state rather than appending a chat transcript. At handoff, save code and records to a branch the successor can access; local uncommitted work is not a completed handoff.
+
+The successor reads the entry point, checks the branch, diff, and verification results, records taking ownership, and continues. Resolve disagreements between records and code first. Parallel workers need explicit task ownership to avoid duplicate execution. Customer, personnel, secret, and sensitive operational data stay in controlled systems; the repository provides the necessary access and verification instructions.
+
+**Handoff acceptance: without the original chat, an appropriately authorized new person or agent can identify the goal, current state, next action, and verification method. If not, the repository record is incomplete.** The [task template](../../templates/en/task-contract.md) includes a progress section.
 
 ## Four records, four questions
 
@@ -11,7 +29,7 @@ The next development session should not need to reconstruct everything from chat
 | `docs/<feature>/` | How does it work now? | Rewrite when behavior changes. |
 | `docs/change_log/` or existing ADRs | Why this change or design? | Retain useful tradeoffs; durable decisions outlive short-term records. |
 | `BACKLOG.md` | Which known issues are deferred? | Record evidence, deferral reason, and fix; close after verification. |
-| `requirement_doc/<series>/` | What contract governs coordinated work? | Specify scope, acceptance, phases, and gates; distinguish proposed from approved. |
+| `requirement_doc/<series>/` | What contract governs coordinated work, and how far has it progressed? | Distinguish proposed from approved; specify acceptance and gates, and update progress and next actions. |
 
 Names can differ; responsibilities should be clear. Code, tests, and schema help establish current behavior, while explicitly authoritative external contracts constrain implementation. Resolve disagreements and correct the wrong side rather than silently choosing a source.
 

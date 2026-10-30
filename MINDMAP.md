@@ -51,10 +51,16 @@ markmap:
 - Clarify services and decision boundaries
 - Improve recurring blocking points
 
+## [Shared foundation: resumable repository](docs/en/06-repository-as-operational-memory.md)
+
+- Goals, plans, progress, and evidence live in the repo
+- One task entry point and one current state record
+- Update at milestones, blockers, and before pausing
+- Any successor resumes from the next action
+
 ## Reference as needed
 
 - [Core principles](docs/en/01-core-principles.md)
-- [Repository memory](docs/en/06-repository-as-operational-memory.md)
 - [Record lifecycle practice](docs/en/08-record-lifecycle.md)
   - Four record types with separate responsibilities
   - Report → reviewed diff → scheduled maintenance

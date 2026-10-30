@@ -20,7 +20,7 @@ Retrieval, implementation, and verification can proceed without repeated confirm
 
 ## Retrieve context as needed
 
-Start with relevant rules, code, and current docs; add issue records and history when needed. Resolve conflicting sources by checking their authority and date. Loading everything adds noise, and newer prose is not necessarily more authoritative.
+Keep goals, progress, next actions, and evidence in the repository so another person or agent can resume. Start with the task record, relevant rules, and code; write back the current state before stopping. Resolve conflicting sources by authority and date. Loading everything adds noise; newer prose is not necessarily more authoritative.
 
 ## Give information a home and an exit
 

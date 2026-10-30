@@ -7,10 +7,12 @@ Copy the policy section into your repository's existing documentation policy. Re
 ## Policy
 
 - Maintainer: [role or team]
+- Repository task index: [path linked from README and assistant instructions]
+- Current progress: [section within each task record; update at milestones, blockers, and before pausing]
 - Current behavior: [path]
 - Significant change history: [path]
 - Durable decisions: [existing ADR location, or retained change records]
-- Independently deferred work: [backlog path or tracker]
+- Independently deferred work: [repository backlog path; link external trackers for association]
 - Coordinated future work and completion evidence: [requirement location]
 
 One fact has one canonical home. Current docs describe present behavior; plans clearly distinguish proposed, approved, and implemented work. Promotion transfers evidence and removes the duplicate task. Before editing, retrieve open work against the affected paths. Fix adjacent work only within the authorized task boundaries; retain work requiring a new product, schema, or cross-system decision.
@@ -53,7 +55,7 @@ Only list commands that actually exist. Keep a single editable source for duplic
 
 ## Pilot acceptance
 
-- [ ] A newcomer can find current behavior, open work, and the owner of a gate.
+- [ ] Without the original chat, a new person or agent can find the goal, progress, next action, and verification method in the repository.
 - [ ] Production and preview evidence are distinguished in tests.
 - [ ] Missing metadata, open gates, and unresolved references retain records.
 - [ ] Report mode is read-only; application mode is idempotent.

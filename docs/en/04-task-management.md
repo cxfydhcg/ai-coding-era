@@ -2,7 +2,7 @@
 
 **English** | [简体中文](../04-task-management.md)
 
-I treat a task as an owned, bounded, verifiable outcome. An agent conversation is an execution attempt; sessions and models can change while the task and its evidence remain.
+I treat a task as an owned, bounded, verifiable outcome. An agent conversation is an execution attempt; goals, progress, blockers, next actions, and evidence live in the repository's task record. A different person or agent resumes from that record; see [repository handoff](06-repository-as-operational-memory.md).
 
 ## Select worthwhile work
 
