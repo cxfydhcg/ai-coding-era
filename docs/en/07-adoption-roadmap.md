@@ -2,6 +2,8 @@
 
 **English** | [简体中文](../07-adoption-roadmap.md)
 
+For a repository-sized first step, follow the [record lifecycle playbook](08-record-lifecycle.md). It starts with one feature and report-only maintenance before adding deletion automation.
+
 AI-native development does not require an immediate reorganization. Begin with one team, one repository, and a few frequent task types. Build trustworthy feedback loops in stages.
 
 ## Stage 1: Establish safety boundaries

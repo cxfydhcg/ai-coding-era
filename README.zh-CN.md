@@ -13,6 +13,10 @@
 
 预览使用开源 [Markmap](https://github.com/markmap/markmap) 生成。Clone 仓库后可以直接打开 `mindmap.zh-CN.html`；运行 `npm install` 和 `npm run mindmap` 可以重新生成两种语言的离线预览，编辑中文导图时运行 `npm run mindmap:watch:zh` 可获得实时预览。
 
+## 把记录生命周期用起来
+
+从[记录生命周期落地指南](docs/08-record-lifecycle.md)开始：四类记录、完整示例、各仓库需要配置的差异，以及自动删除前必须通过的测试。复制[政策模板](templates/record-lifecycle-policy.md)到自己的仓库，先从只读巡检开始。
+
 ## 个人、团队协作、任务管理与组织架构应该如何改变
 
 AI 正在快速降低“把想法变成代码”的成本，但软件工程的核心约束并没有消失。需求仍然可能不清楚，系统仍然会进入生产环境，错误仍然需要有人负责，代码仍然要被未来的开发者和 Agent 维护。
@@ -47,6 +51,7 @@ AI 正在快速降低“把想法变成代码”的成本，但软件工程的�
 | 团队架构 | 公司应如何划分领域团队、平台能力和治理责任？ | [团队架构](docs/05-organization-structure.md) |
 | Repository | 如何把临时对话变成可执行的长期记忆？ | [从代码仓库到运行记忆](docs/06-repository-as-operational-memory.md) |
 | 落地 | 如何从个人试用逐步走向组织能力？ | [采用路线图](docs/07-adoption-roadmap.md) |
+| 记录生命周期 | 如何采用、验证和维护四类记录？ | [记录生命周期落地指南](docs/08-record-lifecycle.md) |
 
 ## 一套最小工作模型
 
@@ -82,6 +87,7 @@ Agent 检索上下文、提出计划并实现
 - [依赖与切片地图](templates/dependency-map.md)：并行之前写清切片、接口契约和阻塞关系。
 - [Backlog 条目](templates/backlog-item.md)：保存真实但当前不应处理的问题。
 - [决策记录](templates/decision-record.md)：保存长期有价值的“为什么”。
+- [记录生命周期政策](templates/record-lifecycle-policy.md)：选择记录位置、发布证据、保留期和自动化门禁。
 
 ## 这套方法不主张什么
 

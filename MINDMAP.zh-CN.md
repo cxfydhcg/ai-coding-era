@@ -218,6 +218,14 @@ markmap:
 - 运行现实：生产证据
 - 每个生命周期状态只有一个有效事实源
 
+### [记录生命周期落地指南](docs/08-record-lifecycle.md)
+
+- 四类记录，每个事实只有一个归属
+- 从发现到退役的完整示例
+- 配置发布证据与人工门禁
+- 报告 → 审查 diff → 定期维护
+- [可复制政策](templates/record-lifecycle-policy.md)
+
 ### 可直接使用的模板
 
 - [任务契约](templates/task-contract.md)

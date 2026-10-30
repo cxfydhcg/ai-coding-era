@@ -158,6 +158,8 @@ Discovery
 
 ## 渐进式落地
 
+具体日常步骤、配置选择与退役测试，见[记录生命周期落地指南](08-record-lifecycle.md)及[政策模板](../templates/record-lifecycle-policy.md)。
+
 无需先设计一套庞大的目录体系。可以按以下顺序开始：
 
 1. 为关键领域建立准确的 current-state docs；

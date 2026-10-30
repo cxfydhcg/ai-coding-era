@@ -131,6 +131,8 @@ Its additional focus is cross-task context continuity, temporal semantics, agent
 
 ## Incremental adoption
 
+For a concrete daily workflow, configuration choices, and retirement tests, use the [record lifecycle playbook](08-record-lifecycle.md) and [policy template](../../templates/en/record-lifecycle-policy.md).
+
 1. Establish accurate current-state docs for critical domains.
 2. Use a short task contract for outcome, scope, and verification.
 3. Create fix-now, backlog, and requirement routes.

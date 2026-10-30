@@ -13,6 +13,10 @@ Prefer an overview to opening documents one by one?
 
 The preview is generated with the open-source [Markmap](https://github.com/markmap/markmap) project. After cloning the repository, open `mindmap.html`, or run `npm install` and `npm run mindmap` to rebuild both offline previews. Use `npm run mindmap:watch:en` for a live English preview while editing.
 
+## Put the record lifecycle to work
+
+Start with the [record lifecycle playbook](docs/en/08-record-lifecycle.md): four record types, a worked example, repository-specific settings, and tests to pass before automated deletion. Copy the [policy template](templates/en/record-lifecycle-policy.md) into your own repository and begin with report-only maintenance.
+
 ## How individual development, team collaboration, task management, and team architecture should change
 
 AI is rapidly lowering the cost of turning an idea into code, but the fundamental constraints of software engineering have not disappeared. Requirements can still be unclear. Systems still run in production. Someone must still own failures. Future developers and agents must still maintain today's code.
@@ -47,6 +51,7 @@ This repository presents an approach that can be adopted incrementally. It is no
 | Team architecture | How should domain ownership, platforms, enablement, and governance be structured? | [Team architecture](docs/en/05-organization-structure.md) |
 | Repository memory | How does temporary discussion become executable long-term context? | [From code repository to operational memory](docs/en/06-repository-as-operational-memory.md) |
 | Adoption | How does an organization move from individual trials to organizational capability? | [Adoption roadmap](docs/en/07-adoption-roadmap.md) |
+| Record lifecycle | How do we adopt, verify, and maintain the four records? | [Record lifecycle playbook](docs/en/08-record-lifecycle.md) |
 
 ## A minimal operating model
 
@@ -82,6 +87,7 @@ The individual lifecycle optimizes an execution. Team collaboration optimizes an
 - [Dependency and slice map](templates/en/dependency-map.md): write down slices, interface contracts, and blocking relations before working in parallel.
 - [Backlog item](templates/en/backlog-item.md): preserve a real issue that should not expand the current scope.
 - [Decision record](templates/en/decision-record.md): retain the durable “why” behind a consequential choice.
+- [Record lifecycle policy](templates/en/record-lifecycle-policy.md): choose record locations, release evidence, retention, and automation gates.
 
 ## What this approach does not claim
 

@@ -218,6 +218,14 @@ markmap:
 - Operational reality: production evidence
 - One active canonical record per lifecycle state
 
+### [Record lifecycle playbook](docs/en/08-record-lifecycle.md)
+
+- Four records and one canonical home per fact
+- Worked example from discovery to retirement
+- Configure release evidence and manual gates
+- Report → reviewed diff → scheduled maintenance
+- [Copyable policy](templates/en/record-lifecycle-policy.md)
+
 ### Ready-to-use templates
 
 - [Task contract](templates/en/task-contract.md)
