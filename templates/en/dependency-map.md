@@ -24,7 +24,7 @@
 | --- | --- | --- | --- | --- | --- |
 |  |  |  |  |  |  |
 
-Merge the contract before implementing in parallel. Parallel work started without an agreed contract is a primary source of rework.
+Agree on the contract before implementing in parallel; integrating the real dependency still requires joint verification.
 
 ## Dependencies and blocks
 

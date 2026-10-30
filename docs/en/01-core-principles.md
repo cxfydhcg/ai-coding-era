@@ -2,90 +2,28 @@
 
 **English** | [简体中文](../01-core-principles.md)
 
-## 1. Optimize for trustworthy outcomes, not code production
+These are the rules I use to judge whether a workflow helps. The [individual workflow](02-individual-workflow.md) turns them into actions; they need not become another approval layer.
 
-Code is never the final result. The result may be fewer payment failures, faster user completion, prevention of data loss, or an auditable business process.
+## Define the outcome
 
-AI can produce a convincing implementation quickly, which magnifies an old mistake: treating the appearance of code as evidence that the problem is solved. AI-era engineering needs an evidence chain—requirements, tests, review, release, and production evidence.
+Before implementation, state what should change, what must stay intact, how to verify it, and who decides. A small edit needs a few sentences. Cross-system changes, migrations, and irreversible operations need a fuller contract.
 
-## 2. Intent precedes generation
+## Verify expected behavior
 
-Before asking an agent to change a system, define at least:
+Tests should check the requirement. AI-written tests can share the implementation's mistaken assumptions; another model or session does not automatically provide independent validation. Check consequential behavior against a contract, real samples, domain judgment, or an independent calculation.
 
-- the observable outcome;
-- what is in scope and explicitly out of scope;
-- compatibility, security, business, and operational constraints;
-- how completion will be proven;
-- who owns consequential tradeoffs and release decisions.
+Report verified facts, inferences, and unverified assumptions separately. Supply evidence instead of confidence.
 
-Without these, an agent is most likely to create a coherent implementation of an incorrect assumption set.
+## Continue within granted authority
 
-## 3. Verification capacity must keep pace with generation capacity
+Retrieval, implementation, and verification can proceed without repeated confirmation of already-authorized steps. New product decisions, cross-system contracts, production actions, and irreversible deletion require the corresponding authority. Repository rules can preauthorize bounded adjacent fixes; discovery itself cannot expand permission.
 
-If implementation throughput increases tenfold while review, testing, and production feedback remain fixed, the organization only creates unverified change faster.
+## Retrieve context as needed
 
-Verification should be layered:
+Start with relevant rules, code, and current docs; add issue records and history when needed. Resolve conflicting sources by checking their authority and date. Loading everything adds noise, and newer prose is not necessarily more authoritative.
 
-```text
-Static constraints → unit behavior → integration boundaries → end-to-end flow → production observation
-```
+## Give information a home and an exit
 
-Risk determines depth, but every task declares a minimum verification standard before implementation. Tests written by the same agent are useful evidence; they are not automatically independent evidence.
+Separate current behavior, future work, and historical rationale. Move or compress information when its state changes instead of maintaining competing copies. Temporary code needs a known dependency and removal condition. Age alone does not establish safe deletion while rollout or accepted-backup repair remains unresolved.
 
-## 4. Bounded agency
-
-Agents should proactively retrieve context, analyze, propose, run safe checks, and identify adjacent problems. They need explicit authority before they:
-
-- expand task scope;
-- change product behavior or public contracts;
-- accept security, privacy, financial, or operational risk;
-- modify production state;
-- delete potentially active compatibility or data paths;
-- communicate externally on behalf of a person or organization.
-
-> Discovery is not decision authority. Execution is not release authority.
-
-## 5. Progressive context, not context dumping
-
-Agents need enough context. Loading every organizational document at once adds noise, stale information, and semantic conflicts.
-
-A more reliable sequence is:
-
-1. Read the task contract and local rules.
-2. Locate relevant code and current-state documentation.
-3. Retrieve related backlog items, decisions, and recent history.
-4. Expand to adjacent domains only when a boundary question appears.
-5. Report conflicting sources and dates instead of guessing which is authoritative.
-
-## 6. One active source of truth per lifecycle state
-
-One concern may move through backlog, requirements, implementation, current documentation, and history. It should not have several independent “current” versions.
-
-```text
-Discovered → Deferred → Contracted → Implemented → Observed → Retired
-```
-
-Information moves, compresses, or is superseded as state changes. Stable IDs preserve traceability; the active canonical record remains unique.
-
-## 7. Evidence over confidence
-
-“Looks good,” “should work,” and a confident agent are not delivery evidence. A good conclusion distinguishes:
-
-- directly verified facts;
-- inferences from available information;
-- unverified assumptions;
-- decisions that require a human owner.
-
-This directs reviewer attention to uncertainty instead of forcing a complete re-investigation.
-
-## 8. Deletion is first-class engineering work
-
-Generating new code is easy; safely deleting old code is harder. Every temporary compatibility layer, migration branch, and feature flag should record:
-
-- why it exists;
-- who or what still depends on it;
-- what evidence permits removal;
-- who owns the retirement decision;
-- how removal will be verified and rolled back.
-
-A temporary mechanism without a retirement process is usually unnamed permanent complexity.
+Judge these rules by rework, missed behavior, and context-recovery cost. The [research notes](00-research-foundation.md) explain the limits of measuring code volume or AI adoption alone.

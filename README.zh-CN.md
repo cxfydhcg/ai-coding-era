@@ -1,101 +1,35 @@
-# AI Coding 时代的软件开发进化
+# AI 时代的软件开发流程
 
 [English](README.md) | **简体中文**
 
-## 可视化导航
+这里记录我在 AI 辅助开发中的实践、踩坑，以及对团队协作的思考，供你参考和改造。
 
-如果逐篇打开文档感觉绕，可以先看全局结构：
+我关心的是：当代码更容易生成，怎样让一个人、一支团队和一个组织更可靠地交付软件？下面分四篇讲清楚，每篇都给出可以尝试的做法。
 
-- [在线打开中文交互式思维导图](https://cxfydhcg.github.io/ai-coding-era/)——支持展开、折叠、缩放和章节跳转
-- [Open the interactive English mind map](https://cxfydhcg.github.io/ai-coding-era/mindmap.html)
-- [直接在 GitHub 浏览可点击的导图结构](MINDMAP.zh-CN.md)
-- [下载离线交互式 Markmap 预览](mindmap.zh-CN.html?raw=1)，然后在本地打开
+## 四条主线
 
-预览使用开源 [Markmap](https://github.com/markmap/markmap) 生成。Clone 仓库后可以直接打开 `mindmap.zh-CN.html`；运行 `npm install` 和 `npm run mindmap` 可以重新生成两种语言的离线预览，编辑中文导图时运行 `npm run mindmap:watch:zh` 可获得实时预览。
-
-## 把记录生命周期用起来
-
-从[记录生命周期落地指南](docs/08-record-lifecycle.md)开始：四类记录、完整示例、各仓库需要配置的差异，以及自动删除前必须通过的测试。复制[政策模板](templates/record-lifecycle-policy.md)到自己的仓库，先从只读巡检开始。
-
-## 个人、团队协作、任务管理与组织架构应该如何改变
-
-AI 正在快速降低“把想法变成代码”的成本，但软件工程的核心约束并没有消失。需求仍然可能不清楚，系统仍然会进入生产环境，错误仍然需要有人负责，代码仍然要被未来的开发者和 Agent 维护。
-
-因此，AI coding 的重点不应该只是“如何写出更好的 prompt”，而应该是：
-
-> 当实现能力变得便宜而充足时，个人、团队和公司应如何重新设计责任、工作流、任务系统与组织结构？
-
-这个仓库给出一套可逐步采用的方法。它不是某个工具的使用手册，也不依赖某个具体代码仓库；它讨论的是长期的软件开发原则。
-
-## 核心判断
-
-1. **AI 提高的是实现吞吐量，不自动提高问题定义和结果验证的质量。**
-2. **人类从主要代码生产者，逐步转向意图负责人、约束设计者、审查者和生产责任人。**
-3. **Agent 可以发现、实现和验证，但不能因为发现了问题就自动获得扩大范围或改变生产状态的权限。**
-4. **Repository 应成为版本化的运行记忆，而不只是源代码容器。**
-5. **任务必须包含结果、边界、验证方法和责任人；prompt 不能代替任务契约。**
-6. **团队的竞争力来自高质量反馈循环，而不是生成代码的数量。**
-7. **删除旧代码、淘汰兼容层和压缩过期上下文，是完整生命周期的一部分。**
-8. **“完成”必须声明深度并附带证据；界面有反应不等于行为、失败路径和运行面已经完成。**
-9. **实现变便宜之后，瓶颈是验证和依赖等待；解耦任务比增加并行执行更能缩短交付时间。**
-
-## 阅读路径
-
-| 主题 | 解决的问题 | 文档 |
+| 从哪里开始 | 核心问题 | 可以带走什么 |
 | --- | --- | --- |
-| 研究基础 | 哪些结论有研究支持，哪些仍需在本组织验证？ | [研究基础与证据边界](docs/00-research-foundation.md) |
-| 总体原则 | AI coding 中什么不应改变？ | [核心原则](docs/01-core-principles.md) |
-| 个人开发生命周期 | 一个人如何与 Agent 从问题走到生产结果？ | [个人软件开发生命周期](docs/02-individual-workflow.md) |
-| 团队协作生命周期 | 多人、多 Agent 如何切片、分配和解耦依赖，共同完成同一条价值流？ | [团队协作的软件生命周期](docs/03-team-collaboration.md) |
-| 任务 | 如何定义、路由、执行和关闭工作，什么才算真的完成？ | [任务管理](docs/04-task-management.md) |
-| 团队架构 | 公司应如何划分领域团队、平台能力和治理责任？ | [团队架构](docs/05-organization-structure.md) |
-| Repository | 如何把临时对话变成可执行的长期记忆？ | [从代码仓库到运行记忆](docs/06-repository-as-operational-memory.md) |
-| 落地 | 如何从个人试用逐步走向组织能力？ | [采用路线图](docs/07-adoption-roadmap.md) |
-| 记录生命周期 | 如何采用、验证和维护四类记录？ | [记录生命周期落地指南](docs/08-record-lifecycle.md) |
+| [个人开发流程](docs/02-individual-workflow.md) | 如何把需求交给 AI，并确认做对了？ | 定义任务、分步实现、验证和交付的日常循环 |
+| [团队合作流程](docs/03-team-collaboration.md) | 多人、多 Agent 怎样配合？ | 按结果拆任务，先定接口，再并行与集成 |
+| [任务管理](docs/04-task-management.md) | 先做什么，同时做多少，怎样算完成？ | 优先级、在制任务上限、完成深度与证据 |
+| [组织架构优化](docs/05-organization-structure.md) | 哪些责任留在团队，哪些能力集中建设？ | 领域责任、共享平台、协作边界和改进信号 |
 
-## 一套最小工作模型
+## 一个已经落地的例子
 
-```text
-人类定义结果、约束和风险边界
-            ↓
-Agent 检索上下文、提出计划并实现
-            ↓
-自动化验证行为、质量和策略
-            ↓
-人类审查关键判断并授权发布
-            ↓
-生产证据回流到任务、文档和淘汰决策
-```
+在 `smrtlite-android` 和 `bp_employee_app` 中，我把当前行为、变更原因、延后问题和需求契约分开存放，再用检查脚本和定期巡检维护它们。
 
-这个模型可以由一个人完成多个角色，也可以由大型组织中的不同团队完成。关键不是职位名称，而是责任不能缺失。
+这让下一次开发有地方找上下文，也让过期记录有退出条件。两个仓库的发布格式和兼容要求不同，复用时需要调整。[记录生命周期实践](docs/08-record-lifecycle.md)展示具体做法和测试边界。
 
-## 四个层次不要混在一起
+## 按需查阅
 
-```text
-个人软件开发生命周期：一个人如何把一个任务交付为可信结果
-团队协作生命周期：一个团队如何共同完成从用户问题到生产学习的价值流
-任务管理系统：工作如何被选择、排队、授权、验证和关闭
-团队架构：公司如何设计长期 ownership、平台能力和团队间关系
-```
+- [核心原则](docs/01-core-principles.md)：各篇共用的判断标准。
+- [仓库如何保存开发记忆](docs/06-repository-as-operational-memory.md)：信息放哪里，什么时候更新或删除。
+- [从小范围试起](docs/07-adoption-roadmap.md)：选一个问题，观察是否真的改善。
+- [研究与证据边界](docs/00-research-foundation.md)：哪些有研究支持，哪些是实践建议。
 
-个人流程优化一次执行，团队协作优化一次端到端交付，任务管理优化工作流，团队架构优化组织长期产生价值的能力。四者互相影响，但不能用同一张流程图代替。
+模板：[任务](templates/task-contract.md) · [完成检查](templates/completion-depth-checklist.md) · [依赖](templates/dependency-map.md) · [Backlog](templates/backlog-item.md) · [决策](templates/decision-record.md) · [记录政策](templates/record-lifecycle-policy.md)。按需要取用，不必全部填写。
 
-## 可直接使用的模板
+也可以看[中文交互导图](https://cxfydhcg.github.io/ai-coding-era/)或[英文导图](https://cxfydhcg.github.io/ai-coding-era/mindmap.html)。本地打开 `mindmap.zh-CN.html`；修改导图源文件后，运行 `npm ci` 和 `npm run mindmap` 重建。
 
-- [任务契约](templates/task-contract.md)：让任务在交给人或 Agent 前具备可执行性。
-- [完成深度检查表](templates/completion-depth-checklist.md)：在标记 Done 之前统一追问“还缺什么”。
-- [依赖与切片地图](templates/dependency-map.md)：并行之前写清切片、接口契约和阻塞关系。
-- [Backlog 条目](templates/backlog-item.md)：保存真实但当前不应处理的问题。
-- [决策记录](templates/decision-record.md)：保存长期有价值的“为什么”。
-- [记录生命周期政策](templates/record-lifecycle-policy.md)：选择记录位置、发布证据、保留期和自动化门禁。
-
-## 这套方法不主张什么
-
-- 不主张所有知识都必须放进 repository；人员、客户、财务等敏感信息应留在合适的系统中。
-- 不主张每个小改动都写长篇 specification；流程重量应由不确定性、协作成本和风险决定。
-- 不主张以 Agent 取代责任人；执行可以委托，问责不能委托。
-- 不主张追求无人审查的最大自动化；高风险动作必须有明确授权和可验证证据。
-
-## 当前状态
-
-这是一个持续演进的双语实践手册。中英文版本使用相同编号和结构；研究、示例、评估方法和工具实现可以继续扩展。
+这里的团队与组织建议需要结合自身环境验证；两个项目中的有效做法，不足以证明适用于所有团队。

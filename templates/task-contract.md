@@ -39,7 +39,7 @@
 
 - 目标深度（D1 主路径 / D2 边界与失败路径 / D3 真实系统可运行 / D4 结果被验证）：
 - 显式不做的深度与原因：
-- 未做部分的 backlog 条目与 owner：
+- 未完成承诺与后续安排（改变承诺需明确确认）：
 - 检查表：[完成深度检查表](completion-depth-checklist.md)
 
 ## Verification plan

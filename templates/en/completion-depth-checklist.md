@@ -3,6 +3,7 @@
 **English** | [简体中文](../completion-depth-checklist.md)
 
 > Purpose: before marking a task Done, ask “what is still missing?” consistently instead of confirming only that the happy path runs.
+> Select checks relevant to the task risk; explain items that do not apply.
 > Depth levels are defined in [task management](../../docs/en/04-task-management.md).
 
 ## 0. Declaration
@@ -10,7 +11,7 @@
 - Task ID:
 - Target depth (D1 / D2 / D3 / D4):
 - Depth explicitly excluded, and why:
-- Backlog items and owners for the excluded parts:
+- Unfulfilled commitments and follow-up plans (changes to the commitment require explicit agreement):
 
 ## D1 Happy path correct
 
@@ -27,7 +28,7 @@
 - [ ] Insufficient permission, unauthenticated access, privilege escalation, tenant isolation
 - [ ] UI states closed out: loading, empty, error, retry, disabled, partial failure
 - [ ] Failures are visible rather than silently swallowed
-- [ ] The test oracle was not derived by the same session that wrote the implementation
+- [ ] Critical expected results have an independent basis: contracts, real samples, domain judgment, or independent calculations; a different session alone is insufficient
 
 ## D3 Runs in the real system
 

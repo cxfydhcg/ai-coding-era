@@ -39,7 +39,7 @@ What observable user or system result should change? Describe behavior, not only
 
 - Target depth (D1 happy path / D2 boundaries and failures / D3 runs in the real system / D4 outcome validated):
 - Depth explicitly excluded, and why:
-- Backlog items and owners for the excluded parts:
+- Unfulfilled commitments and follow-up plans (changes to the commitment require explicit agreement):
 - Checklist: [completion depth checklist](completion-depth-checklist.md)
 
 ## Verification plan

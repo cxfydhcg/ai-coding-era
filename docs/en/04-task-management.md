@@ -1,238 +1,62 @@
-# Task Management in the AI Coding Era
+# Task Management: Control Starts and Define Completion
 
 **English** | [简体中文](../04-task-management.md)
 
-Traditional task systems often behave like lists used to allocate work to people. Once AI makes execution concurrency nearly instant, that model breaks: more work starts, review and integration queues grow, and real outcomes become harder to see.
+I treat a task as an owned, bounded, verifiable outcome. An agent conversation is an execution attempt; sessions and models can change while the task and its evidence remain.
 
-AI-era task management should manage four things: **selection, flow, authority, and evidence**.
+## Select worthwhile work
 
-## Keep four kinds of object separate
+Consider user impact, urgency, risk reduction, and the cost of complete delivery: understanding, implementation, verification, coordination, and release. Fast code generation alone does not justify priority.
+
+| Finding | Disposition |
+| --- | --- |
+| Within current authority and verifiable now | Fix now. |
+| Real and independently actionable, but deferred | Backlog with evidence, deferral reason, and a concrete fix. |
+| Needs shared interfaces, phases, rollout, or product decisions | Requirement contract identifying decisions not yet approved. |
+| Insufficient evidence | Time-boxed investigation with a specific question. |
+| Invalid or no longer worth doing | Remove or close with a reason. |
+
+Before starting, name the outcome, scope, constraints, acceptance, and owner. Complex work also needs dependencies, authority, and release plans. Use the [task template](../../templates/en/task-contract.md).
+
+## Make waiting visible with few states
 
 ```text
-Outcome: the user or business result to change
-  └─ Initiative: coordinated changes organized around that result
-      └─ Task contract: an independently owned and verifiable unit of work
-          └─ Execution attempt: one human or agent session
+Needs clarification → Ready → Implementing → Verifying → Release/observation pending → Done
 ```
 
-- An outcome may persist for months and be validated by metrics.
-- An initiative coordinates tasks, teams, or rollout phases.
-- A task is the task system's basic unit of responsibility.
-- An agent session is an attempt that may fail, restart, or switch models.
+Ready means acceptance is clear and critical dependencies have a plan. Done means the agreed verification depth was reached. Small tasks can combine states; renaming a column cannot complete a missing device check or production observation.
 
-Creating a ticket for every agent conversation produces noise. Giving a large outcome directly to an agent destroys boundaries. Stable IDs belong to tasks and initiatives, not temporary sessions.
+Limit work that has started but not finished (WIP). When verification is full, prioritize review, integration, and unblocking older work. Several parallel agents do not represent several completed business outcomes.
 
-## A work item is an outcome contract
+Show task age, its blocking point, and who can remove it. With enough history, use cycle time to forecast delivery ranges. WIP, throughput, work item age, and cycle time are basic flow measures in the [Kanban Guide](https://kanbanguides.org/the-kanban-guide/); experiment locally with limits and escalation thresholds.
 
-A Ready task includes at least:
+## Agree on completion depth
 
-| Field | Purpose |
-| --- | --- |
-| Outcome | States what changes, not what gets generated |
-| Evidence | Proves the problem is real |
-| Scope and non-goals | Controls expansion and review cost |
-| Constraints | Preserves product, data, security, compatibility, and operational boundaries |
-| Acceptance criteria | Converts intent into decidable behavior |
-| Verification plan | Declares evidence sources and independence |
-| Owner and authority | Separates execution, decision, and release rights |
-| Rollout and retirement | Connects production evidence and cleanup |
+This is a checking method used in these notes, not an industry standard. Depth describes the task's commitment, not a team score.
 
-Use the [task contract template](../../templates/en/task-contract.md).
-
-## Route work by shape
-
-| Work shape | Route |
-| --- | --- |
-| Safe to finish and verify inside current scope | Fix now |
-| Real and independently describable, but should not expand current scope | Backlog |
-| Requires shared scope, phases, cross-team coordination, rollout, or release gates | Requirement or initiative |
-| Lacks evidence and needs bounded learning | Discovery or spike |
-| Invalid, superseded, or not valuable | Reject or retire |
-
-Agents can discover, deduplicate, gather evidence, and recommend routing. Discovery does not authorize scope expansion.
-
-## Turn a to-do list into an explicit workflow
-
-```text
-Discovery
-→ Triage
-→ Ready
-→ In Progress
-→ Verify / Review
-→ Ready to Release
-→ Observe
-→ Done
-```
-
-Each state needs entry, exit, and WIP policies.
-
-| State | Key question | Exit evidence |
+| Depth | What must be established | Example evidence |
 | --- | --- | --- |
-| Discovery | Is the problem real and worth continuing? | Evidence and outcome |
-| Triage | Do now, defer, or reject? | Priority, owner, and route |
-| Ready | Is it clear and executable? | Contract and known dependencies |
-| In Progress | Is a bounded increment being produced? | Reviewable change set |
-| Verify / Review | Does behavior and risk meet the standard? | Validation and approvals |
-| Ready to Release | Can it safely enter the target environment? | Rollout, monitoring, rollback |
-| Observe | Does reality support the hypothesis? | Production and user evidence |
-| Done | Are learning and cleanup complete? | Documentation, follow-ups, retirement gates |
+| D0 Demonstrable | The feature exists and reacts. | A demo; insufficient alone to establish correctness. |
+| D1 Happy path correct | Typical input meets acceptance. | Behavioral tests or reproducible verification. |
+| D2 Boundaries and failures correct | Relevant errors, permissions, duplicates, and concurrency are handled. | Boundary tests, fault injection, or exploration records. |
+| D3 Operates in the real system | Data, dependencies, compatibility, performance, and recovery meet the need. | Real integration, pre-production, or limited rollout. |
+| D4 Outcome observed | User or system results are verified and temporary mechanisms addressed. | Production evidence; removal records or retained mechanisms with owners and gates. |
 
-Low-risk work may combine states. Simplifying the board does not remove the responsibility.
+A prototype may target D1. User-facing features commonly need D2 and D3; payments, authorization, and migrations also need follow-up observation. Consequences and reversibility set depth: even a one-off deletion script may be high risk.
 
-## Constrain WIP by scarce verification capacity
+If the commitment is D3, moving unfinished integration testing into backlog does not complete it. Changing the commitment requires an explicit decision. Mark irrelevant checks as not applicable with a reason instead of creating unnecessary tasks.
 
-Agents can start many implementations while domain review, integration environments, and security validation remain scarce.
+## Look for four omissions
 
-- Stop starting implementation when the Verify queue is full.
-- Help old work cross a bottleneck before selecting new work.
-- Reserve review capacity for high-risk changes.
-- Treat parallel agent attempts as internal to one task, not separate business WIP.
-- Make every WIP exception explicit and temporary.
+- **States:** what happens on empty results, errors, timeout, retries, and partial success?
+- **Perspectives:** does it work for ordinary users, other tenants, legacy data, and real volume?
+- **Circular evidence:** do tests merely restate the implementation? Where do expected results come from?
+- **Delivery:** who owns integration, configuration, diagnosis, recovery, and temporary paths?
 
-The [Kanban Guide](https://kanbanguides.org/the-kanban-guide/) requires explicit control of work between started and finished, using WIP, throughput, work item age, and cycle time to understand flow.
+A separate agent session can add another perspective. Independent evidence still comes from contracts, real samples, domain judgment, or independent calculations. Select relevant items from the [completion checklist](../../templates/en/completion-depth-checklist.md).
 
-## Manage aging, not only deadlines
+## Authority and evaluation
 
-Show the age of every started item. Use historical cycle time to form a probabilistic Service Level Expectation—for example, “85% of standard items finish within eight days.” When an item approaches or exceeds the SLE, ask:
+State what the agent may complete continuously, which new decisions require authorization, and who may release. Authority follows consequences, not model names; do not reapprove already-authorized steps.
 
-- Is it waiting for a dependency or decision?
-- Is its scope growing?
-- Is the verification environment missing?
-- Should it be split, downgraded, canceled, or escalated?
-- Is the agent continuing to generate without convergence?
-
-Historical flow is often a better forecasting tool for uncertain software work than a single-point effort promise.
-
-## Priority connects outcomes and cost
-
-Consider:
-
-- user or business value;
-- time criticality;
-- risk reduction or opportunity enablement;
-- cost of delay;
-- verification and coordination cost;
-- reversibility and cognitive load;
-- whether the work removes future WIP or dependencies.
-
-“AI can do it quickly” is not a priority argument. Cheap implementation with expensive verification may consume more system capacity.
-
-## Risk determines agent authority
-
-| Risk | Example | Authority and gates |
-| --- | --- | --- |
-| Low | Copy, mechanical refactor, local tests | Continuous execution and self-check; author confirms |
-| Medium | Normal business logic, internal interfaces | Agent implements; peer review and automation required |
-| High | Authorization, payments, public API, migrations | Plan and key choices approved first; independent validation and progressive release |
-| Extreme | Irreversible data or production safety boundary | Least privilege, two-person authorization, rehearsal, explicit release authority |
-
-Authority is a task property, not merely a model property. The same agent should have different capabilities when editing tests and deleting production data.
-
-## Triage new findings
-
-```text
-Real problem?
-  ├─ No: record why it is invalid; do not pollute backlog
-  └─ Yes
-      ├─ In scope and verifiable: fix now
-      ├─ Independently durable but not committed: backlog
-      ├─ Needs coordination or approval: requirement / initiative
-      └─ Insufficient evidence: time-boxed discovery
-```
-
-A backlog item must stand alone without the original conversation. Use the [backlog template](../../templates/en/backlog-item.md). Regularly remove duplicates, expired concerns, and work the organization will never pursue.
-
-## Completion depth: demo-able is not done
-
-AI makes the first working version very cheap, so the “done” signal arrives earlier. What got faster is the time to reach a **demo-able** state, not the time to reach a **production-worthy** one. Generated implementations cover happy-path patterns well and systematically under-serve boundary semantics, failure paths, and operational reality, so the distance between a demo and real completion usually widens rather than shrinks.
-
-“The button exists and clicking it does something” is the shallowest layer, not completion.
-
-### Depth levels
-
-| Depth | Meaning | Exit evidence |
-| --- | --- | --- |
-| D0 Exists | Code merged, UI present, click produces a reaction | Screenshot or demo |
-| D1 Happy path correct | Typical input produces the correct result | Automated tests against acceptance criteria |
-| D2 Boundaries and failure paths correct | Empty, oversized, invalid input, concurrency, duplicate submission, retry, timeout, insufficient permission, partial failure, idempotency | Boundary tests and exploratory records |
-| D3 Runs in the real system | Real data volume and legacy dirty data, migration and compatibility, performance, observability, rollback, multi-user and multi-tenant views | Pre-production or canary evidence |
-| D4 Outcome validated | Target signals moved; old paths and temporary mechanisms removed | Production evidence and retirement record |
-
-Depth is not a quality score. It is the **scope of the commitment**. A task contract must declare its target depth; without it, both humans and agents default to stopping at D0 or D1.
-
-### Shallow-completion patterns to expect in the AI era
-
-Asking about these finds real gaps faster than asking “is this code correct?”
-
-- **Unclosed state:** a success state exists, but loading, empty, error, retry, disabled, and partial-failure states do not; failures are silently swallowed.
-- **Only the mentioned inputs:** inputs named in the prompt are handled; unmentioned input types, boundary values, concurrency, and duplicate submissions are skipped.
-- **Tests derived from the implementation:** assertions restate the code instead of the requirement—high coverage, no independent oracle.
-- **Correct only on demo data:** passes on small clean datasets and fails at real volume, on legacy dirty data, or across tenants and time zones.
-- **Single-perspective validation:** verified only as the author, with admin rights, on desktop, in the default locale.
-- **Additions without removals:** the new path ships while the old path, dual writes, migration scripts, feature flags, and dead code remain.
-- **Missing operability:** no logs, metrics, alerts, audit trail, or diagnostic entry point when something breaks.
-- **Documentation and configuration drift:** behavior changed; current-state docs, runbooks, alert thresholds, and permission configuration did not.
-- **Locally done, integration undone:** every slice passes its own checks and nobody owns the combined behavior.
-- **Deep omissions:** performance and N+1 queries, concurrent writes, time zones and units, localization, accessibility, data retention and deletion.
-
-### Risk and reversibility set the required depth
-
-| Work type | Reasonable target depth |
-| --- | --- |
-| One-off internal script, copy change, throwaway prototype | D1 |
-| Normal internal feature, low-risk business logic | D2 |
-| User-facing feature, cross-team interface | D3 |
-| Authorization, payments, data migration, public API, security boundary | D3, and must reach D4 |
-
-Do not force maximum depth on every task. Excess depth consumes the team's scarcest verification capacity and crowds out genuinely high-risk work; insufficient depth pushes cost into future rework, incidents, and other teams. Teams delivering one product must agree on a minimum target depth, or one team's “done” becomes another team's invisible queue—see [team collaboration](03-team-collaboration.md).
-
-### Make depth operational
-
-- Write the **target depth** and the **explicitly excluded depth** into the task contract; excluded parts become backlog items with an owner and a review date.
-- State acceptance criteria as observable behavior under stated conditions, not as “implement feature X.”
-- Do not let the same agent session that wrote the implementation generate the tests for high-risk behavior; use a separate session and derive tests from the requirement rather than the diff to keep the oracle independent.
-- The first review question is “what is missing?” rather than “is this code correct?”—which inputs, states, failure paths, and user perspectives are uncovered.
-- Completion must carry evidence links. Done is an evidenced claim, not a status click.
-- Use the [completion depth checklist](../../templates/en/completion-depth-checklist.md) so depth does not depend on individual habits.
-- Treat shallow completion as a system signal, not a personal failing: watch reopen rate, patch tasks spawned shortly after Done, escaped defects, and review rework.
-
-## Definition of Ready
-
-- Outcome, owner, and priority are clear.
-- Critical evidence is accessible.
-- Scope, non-goals, and agent authority are explicit.
-- Acceptance criteria are verifiable.
-- The target completion depth and its verification method are explicit.
-- Dependencies name the blocking point, the way it is removed, and who owns it—see the [dependency map](../../templates/en/dependency-map.md).
-- Major unknowns are identified.
-- The task fits the current feedback cycle.
-
-## Definition of Done
-
-- Acceptance criteria have risk-appropriate evidence.
-- The declared target depth is reached; any depth not reached is recorded explicitly with an owner and a review date.
-- Boundary, failure-path, and operability results are inspectable, not just a happy-path demo.
-- Scope deviations are explained and authorized.
-- Code, tests, current documentation, and runtime configuration agree.
-- Release, rollback, and required observation are complete.
-- Out-of-scope findings have explicit disposition.
-- Temporary mechanisms are gone or have an owner and removal gate.
-
-Multiple teams delivering one product should share a minimum Definition of Done; otherwise one team's “done” becomes another team's invisible queue. [Scrum Guide](https://scrumguides.org/scrum-guide.html)
-
-## What to measure
-
-- Outcome attainment, not only closure count;
-- lead time from Ready to production evidence;
-- waiting time and work item age in each state;
-- throughput, cycle time, and WIP;
-- review rework, scope expansion, and reopen rate;
-- patch tasks spawned shortly after Done (a shallow-completion signal);
-- share of waiting time caused by dependency or decision blocks;
-- generation time relative to verification time;
-- failed releases, rollback, and production defects;
-- legacy mechanisms that survive past their removal gate.
-
-Do not use story points, lines of code, agent calls, or task closures as individual performance measures. [SPACE](https://www.microsoft.com/en-us/research/publication/the-space-of-developer-productivity-theres-more-to-it-than-you-think/) shows why productivity cannot be reduced to one activity metric.
-
-A good AI-era task system does not make everything start faster. It makes the most valuable work finish more reliably.
+Track delivery time, waiting, rework, escaped defects, and user results. Avoid judging individuals by code volume, agent calls, or closure counts alone. [SPACE](https://www.microsoft.com/en-us/research/publication/the-space-of-developer-productivity-theres-more-to-it-than-you-think/) likewise argues against reducing productivity to a single activity metric.
